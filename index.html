@@ -13,14 +13,6 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF6EE; color: #2A2421; scroll-behavior: smooth; }
         .font-luxury { font-family: 'Cinzel', serif; }
-        select {
-            background-image: url("data:image/svg+xml;utf8,<svg fill='%232A2421' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
     </style>
 </head>
 <body class="overflow-x-hidden relative">
@@ -150,7 +142,7 @@
                         <div class="space-y-3 bg-[#FAF6EE] p-4 rounded-xl mb-2 border border-[#E6DFD3]">
                             <div>
                                 <label class="block text-[9px] text-[#2A2421]/60 font-bold uppercase tracking-wider mb-1">Canvas Theme Background</label>
-                                <select id="color-initials-a" onchange="updateInitialImage('a', this.value)" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-3 py-2 text-xs text-[#2A2421] font-semibold focus:outline-none cursor-pointer">
+                                <select id="color-initials-a" onchange="updateInitialImage('a', this.value)" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-3 pr-10 py-2.5 text-xs text-[#2A2421] font-semibold focus:outline-none cursor-pointer">
                                     <option value="0004">🟫 Luxury Tan Base Theme</option>
                                     <option value="0006">🟩 Sage Green Theme</option>
                                     <option value="0008">🧱 Terracotta Rust Theme</option>
@@ -175,7 +167,7 @@
                         <div class="space-y-3 bg-[#FAF6EE] p-4 rounded-xl mb-2 border border-[#E6DFD3]">
                             <div>
                                 <label class="block text-[9px] text-[#2A2421]/60 font-bold uppercase tracking-wider mb-1">Canvas Theme Background</label>
-                                <select id="color-initials-b" onchange="updateInitialImage('b', this.value)" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-3 py-2 text-xs text-[#2A2421] font-semibold focus:outline-none cursor-pointer">
+                                <select id="color-initials-b" onchange="updateInitialImage('b', this.value)" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-3 pr-10 py-2.5 text-xs text-[#2A2421] font-semibold focus:outline-none cursor-pointer">
                                     <option value="0005">🟫 Luxury Tan Base Theme</option>
                                     <option value="0007">🟩 Sage Green Theme</option>
                                     <option value="0009">🧱 Terracotta Rust Theme</option>
@@ -229,14 +221,14 @@
 
         function updateInitialImage(cardVariant, selectedPage) {
             let targetImageId = (cardVariant === 'a') ? 'img-initials-a' : 'img-initials-b';
-            document.getElementById(targetImageId).src = `FRONT SHIELD_page-${selectedPage}.jpg`;
+            document.getElementById(targetImageId).src = 'FRONT SHIELD_page-' + selectedPage + '.jpg';
         }
 
         function addTextItem(styleName, price, textInputId) {
             const textVal = document.getElementById(textInputId).value.trim();
             if (!textVal) { alert("Please input your desired Custom Wording Phrase!"); return; }
 
-            shoppingCart.push({ name: styleName, price: price, details: `Custom Phrase: "${textVal}"` });
+            shoppingCart.push({ name: styleName, price: price, details: 'Custom Phrase: "' + textVal + '"' });
             document.getElementById(textInputId).value = '';
             updateCartInterface(); toggleCart();
         }
@@ -249,9 +241,9 @@
             if (!initialVal) { alert("Please type your chosen Monogram Initial Letter!"); return; }
 
             shoppingCart.push({ 
-                name: `${styleName} (${chosenColorName.replace(/[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD00-\uDFFF]/g, '').trim()})`, 
+                name: styleName + ' (' + chosenColorName + ')', 
                 price: 650, 
-                details: `Monogram Initial Letter: [ ${initialVal.toUpperCase()} ] (Layout Reference: Page ${chosenPage})` 
+                details: 'Monogram Initial Letter: [ ' + initialVal.toUpperCase() + ' ] (Layout Reference: Page ' + chosenPage + ')' 
             });
             document.getElementById(initialInputId).value = '';
             updateCartInterface(); toggleCart();
@@ -273,8 +265,8 @@
             const totalDisplay = document.getElementById('cart-total-display');
             
             if (shoppingCart.length === 0) {
-                container.innerHTML = `<p class="text-gray-400 text-xs text-center py-12 font-medium">Your selection cart is currently empty.</p>`;
-                totalDisplay.innerText = `0 EGP`;
+                container.innerHTML = '<p class="text-gray-400 text-xs text-center py-12 font-medium">Your selection cart is currently empty.</p>';
+                totalDisplay.innerText = '0 EGP';
                 return;
             }
 
@@ -296,5 +288,23 @@
             });
 
             container.innerHTML = htmlPayload;
-            totalDisplay.innerText = `${combinedTotalPrice.toLocaleString()} EGP`;
+            totalDisplay.innerText = combinedTotalPrice.toLocaleString() + ' EGP';
         }
+
+        function submitOrderViaWhatsApp() {
+            if (shoppingCart.length === 0) { alert("Your cart is empty!"); return; }
+            let orderMessageText = 'Hi Desert Summer! I want to place an order:\n\n';
+            
+            shoppingCart.forEach((item, index) => {
+                orderMessageText += '📍 ITEM #' + (index + 1) + ':\n• Style: ' + item.name + '\n• Setup: ' + item.details + '\n• Price: ' + item.price.toLocaleString() + ' EGP\n\n';
+            });
+
+            let ultimateTotal = shoppingCart.reduce((sum, item) => sum + item.price, 0);
+            orderMessageText += '💰 TOTAL ESTIMATE: ' + ultimateTotal.toLocaleString() + ' EGP\n\nKindly confirm payment parameters and delivery windows!';
+            
+            const destinationPhone = "201112220146";
+            window.open('https://wa.me/' + destinationPhone + '?text=' + encodeURIComponent(orderMessageText), '_blank');
+        }
+    </script>
+</body>
+</html>
