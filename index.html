@@ -8,11 +8,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;700&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0c10; color: #f3f4f6; scroll-behavior: smooth; }
         .font-luxury { font-family: 'Cinzel', serif; }
+        select {
+            background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            webkit-appearance: none;
+            moz-appearance: none;
+            appearance: none;
+        }
     </style>
 </head>
 <body class="overflow-x-hidden relative">
@@ -25,154 +33,209 @@
         </button>
     </header>
 
-    <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6 relative">
+    <section class="min-h-[55vh] flex flex-col justify-center items-center text-center px-6 relative">
         <div class="absolute w-96 h-96 bg-[#DCC6A0]/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <span class="text-xs font-semibold tracking-widest text-[#DCC6A0] uppercase bg-[#DCC6A0]/10 px-4 py-1.5 rounded-full mb-6">Bespoke Interior Staging</span>
-        <h1 class="font-luxury text-4xl md:text-7xl tracking-tight leading-tight mb-6">
+        <span class="text-xs font-semibold tracking-widest text-[#DCC6A0] uppercase bg-[#DCC6A0]/10 px-4 py-1.5 rounded-full mb-6">Bespoke 5-Piece Interior Staging</span>
+        <h1 class="font-luxury text-4xl md:text-6xl tracking-tight leading-tight mb-6">
             Shield the Heat.<br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#DCC6A0] via-[#708D81] to-[#C0614C]">Command the Style.</span>
         </h1>
-        <p class="text-sm md:text-base text-gray-400 max-w-md mx-auto mb-8 leading-relaxed">
-            Premium custom-crafted car sunshields designed with your personalized luxury layout drops. Universal classic fit.
+        <p class="text-xs text-gray-400 max-w-md mx-auto mb-8">
+            Laser-fit premium car sunshields tailored to your specific vehicle chassis and customized fine-art accents.
         </p>
-        <a href="#collection" class="bg-white text-black font-semibold px-8 py-4 rounded-full text-sm tracking-wider uppercase hover:bg-[#DCC6A0] transition duration-300 transform hover:scale-105">
-            Design Your Set
+        <a href="#collection" class="bg-white text-black font-semibold px-8 py-3.5 rounded-full text-xs tracking-wider uppercase hover:bg-[#DCC6A0] transition duration-300 transform hover:scale-105">
+            View Complete 12-Page Drop
         </a>
     </section>
 
-    <section id="collection" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-20">
-            <h2 class="font-luxury text-3xl md:text-5xl mb-3">The Drop Custom Lineup</h2>
-            <p class="text-xs text-gray-500 uppercase tracking-widest">Select your favorite layout style from our design sheets</p>
+    <section id="collection" class="py-12 px-6 max-w-7xl mx-auto">
+        
+        <div class="mb-12">
+            <h2 class="font-luxury text-xl border-b border-white/10 pb-3 mb-8 text-[#DCC6A0]">01 / Custom Wording Editions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_1.jpg" class="w-full h-full object-cover" alt="Statement Chalk Layout">
+                        </div>
+                        <h3 class="font-luxury text-lg mb-2">Statement Chalk Layout</h3>
+                        <p class="text-xs text-gray-400 mb-4">Crisp high-contrast framing layout. Customize this shield set with your own personalized text phrase.</p>
+                        <div class="space-y-2 bg-black/20 p-4 rounded-xl">
+                            <input type="text" id="car-text1" placeholder="Car Model & Year (e.g., BMW G20 2024)" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#DCC6A0]">
+                            <input type="text" id="val-text1" placeholder="Your Custom Phrase (e.g., Out Of Office)" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#DCC6A0]">
+                        </div>
+                    </div>
+                    <button onclick="addTextItem('Statement Chalk Layout', 1800, 'car-text1', 'val-text1')" class="mt-4 w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-3 rounded-lg text-xs uppercase tracking-wider transition">Add To Cart • 1,800 EGP</button>
+                </div>
+
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_2.jpg" class="w-full h-full object-cover" alt="Linear Pure Statement">
+                        </div>
+                        <h3 class="font-luxury text-lg mb-2">Linear Pure Statement</h3>
+                        <p class="text-xs text-gray-400 mb-4">Abstract modern architectural styling lines framing a clean central word pocket configuration.</p>
+                        <div class="space-y-2 bg-black/20 p-4 rounded-xl">
+                            <input type="text" id="car-text2" placeholder="Car Model & Year (e.g., Mercedes C200 2025)" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#708D81]">
+                            <input type="text" id="val-text2" placeholder="Your Custom Phrase" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#708D81]">
+                        </div>
+                    </div>
+                    <button onclick="addTextItem('Linear Pure Statement', 1800, 'car-text2', 'val-text2')" class="mt-4 w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-3 rounded-lg text-xs uppercase tracking-wider transition">Add To Cart • 1,800 EGP</button>
+                </div>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-[#12141c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between group">
-                <div>
-                    <div class="h-72 rounded-2xl bg-zinc-900 mb-6 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1517148818476-45a4e4ba9b44?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="White Slide 1">
+        <div class="mb-12">
+            <h2 class="font-luxury text-xl border-b border-white/10 pb-3 mb-8 text-[#708D81]">02 / Premium Monogram Initials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img id="img-initials-a" src="FRONT SHIELD_page_4.jpg" class="w-full h-full object-cover transition duration-300" alt="Angel Monogram Crest">
+                        </div>
+                        <h3 class="font-luxury text-lg mb-1">Angel Monogram Crest</h3>
+                        <p class="text-xs text-gray-400 mb-4">Classical fine-art double angel symmetry configuration centered around your choice of initial letter.</p>
+                        
+                        <div class="space-y-3 bg-black/20 p-4 rounded-xl mb-2">
+                            <div>
+                                <label class="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">Select Canvas Theme Color</label>
+                                <select id="color-initials-a" onchange="updateInitialImage('a', this.value)" class="w-full bg-zinc-800 border border-white/10 rounded-lg px-3 py-2 text-xs text-white font-medium focus:outline-none">
+                                    <option value="Luxury Tan Base (Page 4)">Luxury Tan Base Theme</option>
+                                    <option value="Sage Green (Page 6)">Sage Green Theme</option>
+                                    <option value="Terracotta Rust (Page 8)">Terracotta Rust Theme</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="text" id="car-initials-a" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none">
+                            </div>
+                            <div>
+                                <input type="text" id="val-initials-a" placeholder="Desired Monogram Letter (e.g., Z)" maxlength="2" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none">
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-[10px] tracking-widest uppercase text-[#DCC6A0] font-mono">Slide 01 // TEXT EDITION</span>
-                    <h3 class="font-luxury text-2xl mt-1 mb-3">Statement Chalk Layout</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">Crisp, high-contrast framing layout. Customize this set with your favorite custom statement or text phrase.</p>
-                    
-                    <div class="bg-black/30 p-4 rounded-xl border border-white/5 mb-6">
-                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 mb-1">Your Custom Sentence/Phrase</label>
-                        <input type="text" id="custom-text-slide1" placeholder="e.g., ساعة... وماشي والله" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#DCC6A0]">
-                    </div>
+                    <button onclick="addMonogramItem('Angel Monogram Crest', 'color-initials-a', 'car-initials-a', 'val-initials-a')" class="mt-4 w-full bg-[#DCC6A0] text-black font-bold py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition">Add Monogram To Cart • 1,950 EGP</button>
                 </div>
-                <div>
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2 px-1">
-                        <span class="text-base font-semibold text-white">1,800 EGP</span>
-                        <span class="text-[10px] font-medium text-[#25D366] bg-[#25D366]/10 px-2.5 py-1 rounded-full text-center">✨ Custom Sentence</span>
-                    </div>
-                    <button onclick="addItemToCart('Statement Chalk Layout (Slide 1)', 1800, 'custom-text-slide1', 'Sentence')" class="w-full bg-[#DCC6A0] text-black font-semibold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-white transition duration-300">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
 
-            <div class="bg-[#12141c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between group">
-                <div>
-                    <div class="h-72 rounded-2xl bg-zinc-900 mb-6 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1517148818476-45a4e4ba9b44?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="White Slide 2">
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="h-64 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img id="img-initials-b" src="FRONT SHIELD_page_5.jpg" class="w-full h-full object-cover transition duration-300" alt="Royal Signet Monogram">
+                        </div>
+                        <h3 class="font-luxury text-lg mb-1">Royal Signet Monogram</h3>
+                        <p class="text-xs text-gray-400 mb-4">Sleek layout variation showcasing crisp, bold signature letters accompanied by secondary framing elements.</p>
+                        
+                        <div class="space-y-3 bg-black/20 p-4 rounded-xl mb-2">
+                            <div>
+                                <label class="block text-[10px] text-gray-400 uppercase tracking-wider mb-1">Select Canvas Theme Color</label>
+                                <select id="color-initials-b" onchange="updateInitialImage('b', this.value)" class="w-full bg-zinc-800 border border-white/10 rounded-lg px-3 py-2 text-xs text-white font-medium focus:outline-none">
+                                    <option value="Luxury Tan Base (Page 5)">Luxury Tan Base Theme</option>
+                                    <option value="Sage Green (Page 7)">Sage Green Theme</option>
+                                    <option value="Terracotta Rust (Page 9)">Terracotta Rust Theme</option>
+                                </select>
+                            </div>
+                            <div>
+                                <input type="text" id="car-initials-b" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none">
+                            </div>
+                            <div>
+                                <input type="text" id="val-initials-b" placeholder="Desired Monogram Letter (e.g., J)" maxlength="2" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none">
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-[10px] tracking-widest uppercase text-[#DCC6A0] font-mono">Slide 02 // TEXT EDITION</span>
-                    <h3 class="font-luxury text-2xl mt-1 mb-3">Linear Pure Statement</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">Abstract modern design framing setup encasing a central custom wording space. Add any short phrase text.</p>
-                    
-                    <div class="bg-black/30 p-4 rounded-xl border border-white/5 mb-6">
-                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 mb-1">Your Custom Sentence/Phrase</label>
-                        <input type="text" id="custom-text-slide2" placeholder="e.g., معلش" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#DCC6A0]">
-                    </div>
+                    <button onclick="addMonogramItem('Royal Signet Monogram', 'color-initials-b', 'car-initials-b', 'val-initials-b')" class="mt-4 w-full bg-[#708D81] text-black font-bold py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-white transition">Add Monogram To Cart • 1,950 EGP</button>
                 </div>
-                <div>
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2 px-1">
-                        <span class="text-base font-semibold text-white">1,800 EGP</span>
-                        <span class="text-[10px] font-medium text-[#25D366] bg-[#25D366]/10 px-2.5 py-1 rounded-full text-center">✨ Custom Sentence</span>
-                    </div>
-                    <button onclick="addItemToCart('Linear Pure Statement (Slide 2)', 1800, 'custom-text-slide2', 'Sentence')" class="w-full bg-[#DCC6A0] text-black font-semibold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-white transition duration-300">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
 
-            <div class="bg-[#12141c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between group">
-                <div>
-                    <div class="h-72 rounded-2xl bg-zinc-900 mb-6 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Angel Initial Slide">
-                    </div>
-                    <span class="text-[10px] tracking-widest uppercase text-[#708D81] font-mono">Slides Archive // MONOGRAM EDITION</span>
-                    <h3 class="font-luxury text-2xl mt-1 mb-3">Angel Monogram Crest</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">Our iconic classical fine-art graphics symmetry. Tailored specifically with a single letter monogram initial.</p>
-                    
-                    <div class="bg-black/30 p-4 rounded-xl border border-white/5 mb-6">
-                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 mb-1">Desired Initial (1 Letter Only)</label>
-                        <input type="text" id="custom-text-slide3" placeholder="e.g., Z" maxlength="1" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-[#708D81] text-center uppercase font-bold tracking-widest">
-                    </div>
-                </div>
-                <div>
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2 px-1">
-                        <span class="text-base font-semibold text-white">1,950 EGP</span>
-                        <span class="text-[10px] font-medium text-cyan-400 bg-cyan-400/10 px-2.5 py-1 rounded-full text-center">✨ 1 Letter Initial Only</span>
-                    </div>
-                    <button onclick="addItemToCart('Angel Monogram Crest (Initial Slide)', 1950, 'custom-text-slide3', 'Initial')" class="w-full bg-[#708D81] text-white font-semibold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-white hover:text-black transition duration-300">
-                        Add To Cart
-                    </button>
-                </div>
             </div>
-
-            <div class="bg-[#12141c] border border-white/5 rounded-3xl p-6 flex flex-col justify-between group opacity-95">
-                <div>
-                    <div class="h-72 rounded-2xl bg-zinc-900 mb-6 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Fixed Art Slide">
-                    </div>
-                    <span class="text-[10px] tracking-widest uppercase text-[#C0614C] font-mono">Special Slide // ART COMPOSITION</span>
-                    <h3 class="font-luxury text-2xl mt-1 mb-3">Desert Wavy Lines</h3>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">The signature abstract flow pattern as a complete fixed canvas drop. No text elements or monograms are added.</p>
-                    
-                    <div class="bg-white/5 border border-white/5 p-4 rounded-xl mb-6 text-center text-xs text-gray-500 italic">
-                        Standard Art Print (Not Customizable)
-                    </div>
-                </div>
-                <div>
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2 px-1">
-                        <span class="text-base font-semibold text-white">1,600 EGP</span>
-                        <span class="text-[10px] font-medium text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-full text-center">🔒 Fixed Design</span>
-                    </div>
-                    <button onclick="addItemToCart('Desert Wavy Lines (Fixed Art Slide)', 1600, '', 'Fixed')" class="w-full bg-[#C0614C] text-white font-semibold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-white hover:text-black transition duration-300">
-                        Add To Cart
-                    </button>
-                </div>
-            </div>
-
         </div>
+
+        <div>
+            <h2 class="font-luxury text-xl border-b border-white/10 pb-3 mb-8 text-[#C0614C]">03 / Graphic Art & Pattern Drops</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_3.jpg" class="w-full h-full object-cover" alt="King Chess Skull">
+                        </div>
+                        <h3 class="font-luxury text-sm mb-1">King Chess Skull</h3>
+                        <p class="text-[11px] text-gray-400 mb-4">Striking fine line art design layout pairing symmetrical chess royalty and skull crown elements.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="car-art1" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none mb-3">
+                        <button onclick="addArtItem('King Chess Skull Graphic', 1850, 'car-art1')" class="w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-2 rounded-lg text-xs uppercase tracking-wider transition">Add • 1,850 EGP</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_10.jpg" class="w-full h-full object-cover" alt="Wavy Lines">
+                        </div>
+                        <h3 class="font-luxury text-sm mb-1">Wavy Lines Minimal</h3>
+                        <p class="text-[11px] text-gray-400 mb-4">Elegant sand topology contour line mappings perfect for a high-end clean look.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="car-art2" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none mb-3">
+                        <button onclick="addArtItem('Wavy Lines Minimalist', 1850, 'car-art2')" class="w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-2 rounded-lg text-xs uppercase tracking-wider transition">Add • 1,850 EGP</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_11.jpg" class="w-full h-full object-cover" alt="Signature Studio Drop">
+                        </div>
+                        <h3 class="font-luxury text-sm mb-1">Signature Studio Set</h3>
+                        <p class="text-[11px] text-gray-400 mb-4">Exclusive editorial concept art installment. Hand-framed luxury accenting configuration.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="car-art3" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none mb-3">
+                        <button onclick="addArtItem('Signature Studio Set', 1850, 'car-art3')" class="w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-2 rounded-lg text-xs uppercase tracking-wider transition">Add • 1,850 EGP</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#12141c] border border-white/5 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="h-44 rounded-xl bg-zinc-900 mb-4 overflow-hidden">
+                            <img src="FRONT SHIELD_page_12.jpg" class="w-full h-full object-cover" alt="Coastal Horizon">
+                        </div>
+                        <h3 class="font-luxury text-sm mb-1">Coastal Horizons</h3>
+                        <p class="text-[11px] text-gray-400 mb-4">Abstract color-blocked summer layout elements capturing premium coastal horizons.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="car-art4" placeholder="Car Model & Year" class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none mb-3">
+                        <button onclick="addArtItem('Coastal Horizon Elements', 1850, 'car-art4')" class="w-full bg-[#1e2230] hover:bg-white hover:text-black text-white font-semibold py-2 rounded-lg text-xs uppercase tracking-wider transition">Add • 1,850 EGP</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </section>
 
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-screen w-full max-w-md bg-[#111217] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 border-l border-white/10 flex flex-col justify-between hidden">
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-screen w-full max-w-md bg-[#111217] shadow-2xl z-50 border-l border-white/10 flex flex-col justify-between hidden">
         <div class="p-6 border-b border-white/10 flex justify-between items-center">
-            <h3 class="font-luxury text-xl text-white">Your Selections</h3>
-            <button onclick="toggleCart()" class="text-gray-400 hover:text-white font-bold text-sm">✕ Close</button>
+            <h3 class="font-luxury text-lg text-white">Your Selection Cart</h3>
+            <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-sm">✕ Close</button>
         </div>
 
         <div id="cart-items-container" class="p-6 overflow-y-auto flex-grow space-y-4">
-            <p class="text-gray-500 text-sm text-center py-12">Your cart is currently empty.</p>
+            <p class="text-gray-500 text-xs text-center py-12">Your cart is currently empty.</p>
         </div>
 
         <div class="p-6 border-t border-white/10 bg-black/20 space-y-4">
-            <div class="flex justify-between items-center font-semibold">
-                <span class="text-sm text-gray-400">Total Order Amount:</span>
-                <span id="cart-total-display" class="text-lg text-[#DCC6A0]">0 EGP</span>
+            <div class="flex justify-between items-center font-semibold text-sm">
+                <span class="text-gray-400">Estimated Total:</span>
+                <span id="cart-total-display" class="text-base text-[#DCC6A0]">0 EGP</span>
             </div>
-            <button onclick="submitOrderViaWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-black font-bold py-4 rounded-xl text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center space-x-2">
+            <button onclick="submitOrderViaWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#20ba5a] text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center space-x-2">
                 <span>⚡ Complete Order on WhatsApp</span>
             </button>
         </div>
     </div>
 
-    <footer class="py-12 border-t border-white/5 text-center text-xs text-gray-600">
+    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-gray-600">
         <p>&copy; 2026 Desert Summer Studio. All Rights Reserved.</p>
     </footer>
 
@@ -182,50 +245,58 @@
         function toggleCart() {
             const sidebar = document.getElementById('cart-sidebar');
             sidebar.classList.toggle('hidden');
-            if (!sidebar.classList.contains('hidden')) {
-                sidebar.classList.remove('translate-x-full');
+        }
+
+        // Automated Dropdown Mapping Engine
+        function updateInitialImage(cardVariant, selectedValue) {
+            let targetImageId = (cardVariant === 'a') ? 'img-initials-a' : 'img-initials-b';
+            let targetPageNum = 4;
+            
+            if (cardVariant === 'a') {
+                if (selectedValue.includes("Page 4")) targetPageNum = 4;
+                if (selectedValue.includes("Page 6")) targetPageNum = 6;
+                if (selectedValue.includes("Page 8")) targetPageNum = 8;
             } else {
-                sidebar.classList.add('translate-x-full');
+                if (selectedValue.includes("Page 5")) targetPageNum = 5;
+                if (selectedValue.includes("Page 7")) targetPageNum = 7;
+                if (selectedValue.includes("Page 9")) targetPageNum = 9;
             }
+            
+            document.getElementById(targetImageId).src = `FRONT SHIELD_page_${targetPageNum}.jpg`;
         }
 
-        function addItemToCart(setName, basePrice, inputId, customType) {
-            let userTextPayload = "Standard Art Print";
+        function addTextItem(styleName, price, carInputId, textInputId) {
+            const carVal = document.getElementById(carInputId).value.trim();
+            const textVal = document.getElementById(textInputId).value.trim();
+            if (!carVal || !textVal) { alert("Please complete both Vehicle Specs and Custom Wording details!"); return; }
 
-            if (customType === 'Sentence') {
-                userTextPayload = document.getElementById(inputId).value.trim();
-                if (!userTextPayload) {
-                    alert("Please write your desired Custom Sentence or Phrase first!");
-                    return;
-                }
-                document.getElementById(inputId).value = '';
-            } else if (customType === 'Initial') {
-                userTextPayload = document.getElementById(inputId).value.trim().toUpperCase();
-                if (!userTextPayload) {
-                    alert("Please enter a single letter monogram initial!");
-                    return;
-                }
-                if (userTextPayload.length > 1) {
-                    alert("This design sheet only allows a single letter initial!");
-                    return;
-                }
-                document.getElementById(inputId).value = '';
-            }
-
-            // Append custom product configuration into shopping cart list matrix
-            shoppingCart.push({
-                name: setName,
-                price: basePrice,
-                textData: userTextPayload,
-                type: customType
-            });
-
-            updateCartInterface();
-            toggleCart();
+            shoppingCart.push({ name: styleName, price: price, car: carVal, details: `Custom Phrase: "${textVal}"` });
+            document.getElementById(carInputId).value = ''; document.getElementById(textInputId).value = '';
+            updateCartInterface(); toggleCart();
         }
 
-        function removeCartItem(itemIndex) {
-            shoppingCart.splice(itemIndex, 1);
+        function addMonogramItem(styleName, selectId, carInputId, initialInputId) {
+            const chosenColor = document.getElementById(selectId).value;
+            const carVal = document.getElementById(carInputId).value.trim();
+            const initialVal = document.getElementById(initialInputId).value.trim();
+            if (!carVal || !initialVal) { alert("Please enter your Car Model and Desired Initial Letter!"); return; }
+
+            shoppingCart.push({ name: `${styleName} (${chosenColor})`, price: 1950, car: carVal, details: `Monogram Initial Letter: [ ${initialVal.toUpperCase()} ]` });
+            document.getElementById(carInputId).value = ''; document.getElementById(initialInputId).value = '';
+            updateCartInterface(); toggleCart();
+        }
+
+        function addArtItem(styleName, price, carInputId) {
+            const carVal = document.getElementById(carInputId).value.trim();
+            if (!carVal) { alert("Please enter your Car Model & Year!"); return; }
+
+            shoppingCart.push({ name: styleName, price: price, car: carVal, details: "Standard Art Drop Print Set" });
+            document.getElementById(carInputId).value = '';
+            updateCartInterface(); toggleCart();
+        }
+
+        function removeCartItem(index) {
+            shoppingCart.splice(index, 1);
             updateCartInterface();
         }
 
@@ -235,7 +306,7 @@
             const totalDisplay = document.getElementById('cart-total-display');
             
             if (shoppingCart.length === 0) {
-                container.innerHTML = `<p class="text-gray-500 text-sm text-center py-12">Your cart is currently empty.</p>`;
+                container.innerHTML = `<p class="text-gray-500 text-xs text-center py-12">Your cart is currently empty.</p>`;
                 totalDisplay.innerText = `0 EGP`;
                 return;
             }
@@ -245,24 +316,15 @@
 
             shoppingCart.forEach((item, index) => {
                 combinedTotalPrice += item.price;
-                
-                let detailLabel = '';
-                if (item.type === 'Sentence') {
-                    detailLabel = `✍️ Custom Phrase: <span class="text-[#25D366] font-semibold">"${item.textData}"</span>`;
-                } else if (item.type === 'Initial') {
-                    detailLabel = `🔤 Monogram Letter: <span class="text-cyan-400 font-bold tracking-widest">${item.textData}</span>`;
-                } else {
-                    detailLabel = `🔒 Style Status: <span class="text-amber-500 font-medium">Fixed Design</span>`;
-                }
-
                 htmlPayload += `
-                    <div class="bg-white/5 border border-white/5 p-4 rounded-xl flex justify-between items-start">
+                    <div class="bg-white/5 border border-white/5 p-4 rounded-xl flex justify-between items-start text-xs">
                         <div>
-                            <h4 class="font-semibold text-sm text-white">${item.name}</h4>
-                            <p class="text-xs text-gray-400 mt-1">${detailLabel}</p>
-                            <span class="text-xs font-mono text-[#DCC6A0] mt-2 inline-block">${item.price.toLocaleString()} EGP</span>
+                            <h4 class="font-semibold text-white">${item.name}</h4>
+                            <p class="text-gray-400 mt-1">🚗 Car: ${item.car}</p>
+                            <p class="text-gray-400">✨ ${item.details}</p>
+                            <span class="text-[#DCC6A0] font-mono mt-1 inline-block">${item.price.toLocaleString()} EGP</span>
                         </div>
-                        <button onclick="removeCartItem(${index})" class="text-red-400 hover:text-red-300 text-xs uppercase font-semibold">Remove</button>
+                        <button onclick="removeCartItem(${index})" class="text-red-400 hover:text-red-300 font-semibold uppercase text-[10px]">Remove</button>
                     </div>
                 `;
             });
@@ -272,39 +334,19 @@
         }
 
         function submitOrderViaWhatsApp() {
-            if (shoppingCart.length === 0) {
-                alert("Your cart is empty!");
-                return;
-            }
-
-            let orderMessageText = `Hi Desert Summer! I want to place an order for the custom drop:\n\n`;
+            if (shoppingCart.length === 0) { alert("Your cart is empty!"); return; }
+            let orderMessageText = `Hi Desert Summer! I want to place an order:\n\n`;
             
             shoppingCart.forEach((item, index) => {
-                orderMessageText += `📍 ITEM #${index + 1}:\n`;
-                orderMessageText += `• Style Layout: ${item.name}\n`;
-                
-                if (item.type === 'Sentence') {
-                    orderMessageText += `• Custom Phrase: "${item.textData}"\n`;
-                } else if (item.type === 'Initial') {
-                    orderMessageText += `• Custom Initial: ${item.textData}\n`;
-                } else {
-                    orderMessageText += `• Design Type: Fixed Print\n`;
-                }
-                
-                orderMessageText += `• Price: ${item.price.toLocaleString()} EGP\n\n`;
+                orderMessageText += `📍 ITEM #${index + 1}:\n• Style: ${item.name}\n• Vehicle Specs: ${item.car}\n• Configuration: ${item.details}\n• Price: ${item.price.toLocaleString()} EGP\n\n`;
             });
 
             let ultimateTotal = shoppingCart.reduce((sum, item) => sum + item.price, 0);
-            orderMessageText += `💰 TOTAL AMOUNT: ${ultimateTotal.toLocaleString()} EGP\n\n`;
-            orderMessageText += `Please check my selection layout and confirm delivery details status!`;
-
-            // Locked-in destination number
-            const destinationPhone = "201112220146";
-            const encryptedUrlPayload = `https://wa.me/${destinationPhone}?text=${encodeURIComponent(orderMessageText)}`;
+            orderMessageText += `💰 TOTAL ESTIMATE: ${ultimateTotal.toLocaleString()} EGP\n\nKindly confirm production scheduling times!`;
             
-            window.open(encryptedUrlPayload, '_blank');
+            const destinationPhone = "201112220146";
+            window.open(`https://wa.me/${destinationPhone}?text=${encodeURIComponent(orderMessageText)}`, '_blank');
         }
     </script>
-
 </body>
 </html>
