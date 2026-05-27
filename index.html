@@ -129,18 +129,17 @@
     <script>
         let shoppingCart = [];
 
-        // Exact HEX mapping shades matching your actual design products
         const colorPaletteStyles = {
             "Luxury Tan": { bg: "#D1A153", text: "#2A2421" },
             "Sage Green": { bg: "#5F8575", text: "#FFFFFF" },
             "Terracotta Rust": { bg: "#C86A52", text: "#FFFFFF" }
         };
 
-        // SECTION 01 FRONT DATA - Strict separation of standalone art vs custom layouts
+        // SECTION 01 FRONT DATA - Names fully adapted to luxury car heritage lines
         const frontShieldsData = [
             { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "1" },
             { id: 2, title: "معلش Sarcastic Statement", desc: "Bold, iconic humorous Arabic script layout statement.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "2" },
-            { id: 3, title: "King Chess Skull Art", desc: "Fine line illustration merging chess alignment with detailed crowns.", price: 600, tag: "Art Drop Series", defaultImg: "10" },
+            { id: 3, title: "BMW Bavarian M-Series Skull Art", desc: "Fine line illustration merging chess alignment with detailed crowns and motorsport heritage.", price: 600, tag: "Automotive Art Series", defaultImg: "10" },
             { 
                 id: 4, 
                 title: "Angel Monogram Crest", 
@@ -169,15 +168,14 @@
                     { name: "Terracotta Rust", fileId: "8" }
                 ]
             },
-            { id: 6, title: "M-Power Performance Edition", desc: "High-contrast motorsport heritage layout built for clean dashboards.", price: 600, tag: "Automotive Heritage", defaultImg: "11" },
-            { id: 7, title: "Silver Star Luxury Elite", desc: "Sleek minimalist brand identity showcase design line.", price: 600, tag: "Automotive Heritage", defaultImg: "12" },
-            { id: 8, title: "Coastal Horizons Art Piece", desc: "Abstract color-blocked horizontal sunset gradients.", price: 600, tag: "Art Drop Series", defaultImg: "9" }
+            { id: 6, title: "BMW M-Power Performance Edition", desc: "High-contrast motorsport heritage layout built for clean dashboards.", price: 600, tag: "Automotive Heritage", defaultImg: "11" },
+            { id: 7, title: "Mercedes-Benz Silver Star Luxury Elite", desc: "Sleek minimalist brand identity showcase design line.", price: 600, tag: "Automotive Heritage", defaultImg: "12" },
+            { id: 8, title: "Marlboro Retro Racing Art Piece", desc: "Abstract color-blocked horizontal retro racing gradients.", price: 600, tag: "Automotive Heritage", defaultImg: "9" }
         ];
 
-        // SECTION 02 SIDE DATA - Reordered so plain white items have NO dropdown controls
+        // SECTION 02 SIDE DATA - Slot #2 removed; monogram indexes completely untangled
         const sideShieldsData = [
             { id: 1, title: "Bespoke Profile Pair Pack #1", desc: "High-density clean white protection side paneling screens.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "1", rightFile: "2" },
-            { id: 2, title: "Bespoke Profile Pair Pack #2", desc: "High-density clean white thermal side shield matrix.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "3", rightFile: "4" },
             {
                 id: 3,
                 title: "Angel Crest Side Monogram",
@@ -186,9 +184,9 @@
                 isInitialDropdown: true,
                 tag: "Bespoke Side Monogram",
                 colors: [
-                    { name: "Luxury Tan", leftFile: "5", rightFile: "6" },
+                    { name: "Luxury Tan", leftFile: "3", rightFile: "4" },
                     { name: "Sage Green", leftFile: "7", rightFile: "8" },
-                    { name: "Terracotta Rust", leftFile: "9", rightFile: "10" }
+                    { name: "Terracotta Rust", leftFile: "11", rightFile: "12" }
                 ]
             },
             {
@@ -199,9 +197,9 @@
                 isInitialDropdown: true,
                 tag: "Bespoke Side Monogram",
                 colors: [
-                    { name: "Luxury Tan", leftFile: "11", rightFile: "12" },
-                    { name: "Sage Green", leftFile: "13", rightFile: "14" },
-                    { name: "Terracotta Rust", leftFile: "15", rightFile: "16" }
+                    { name: "Luxury Tan", leftFile: "5", rightFile: "6" },
+                    { name: "Sage Green", leftFile: "9", rightFile: "10" },
+                    { name: "Terracotta Rust", leftFile: "13", rightFile: "14" }
                 ]
             },
             { id: 5, title: "Bespoke Profile Pair Pack #5", desc: "Premium cabin-fit tinted side layouts.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "17", rightFile: "18" },
@@ -214,7 +212,6 @@
             applyDropdownColorsOnLoad();
         };
 
-        // Fallback File Extension Engine
         function handleImgError(img, type, id) {
             if (!img.dataset.retryStep) {
                 img.dataset.retryStep = '1';
@@ -234,7 +231,6 @@
             }
         }
 
-        // Live Front Dropdown Color Engine
         function updateFrontImage(selectElement, targetImgId) {
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const targetFile = selectedOption.dataset.file;
@@ -251,7 +247,6 @@
             }
         }
 
-        // Live Side Dropdown Color Engine
         function updateSideImagePair(selectElement, leftImgId, rightImgId) {
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const leftFile = selectedOption.dataset.left;
@@ -285,7 +280,6 @@
             });
         }
 
-        // Card Injection Engine
         function renderCatalogGrids() {
             const frontContainer = document.getElementById('grid-front-shields');
             const sideContainer = document.getElementById('grid-side-shields');
@@ -391,7 +385,6 @@
             }).join('');
         }
 
-        // Cart Actions
         function addFrontItemWithMeta(title, price, meta, monogramId, customTextId) {
             if (monogramId) {
                 const char = document.getElementById(`input-letter-f-${monogramId}`).value.trim();
@@ -453,7 +446,6 @@
             totalDisplay.innerText = combinedTotal.toLocaleString() + ' EGP';
         }
 
-        // Tab Switching
         function filterCatalog(category) {
             document.getElementById('section-front').style.display = (category === 'all' || category === 'front') ? 'block' : 'none';
             document.getElementById('section-side').style.display = (category === 'all' || category === 'side') ? 'block' : 'none';
