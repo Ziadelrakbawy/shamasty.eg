@@ -13,6 +13,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF6EE; color: #2A2421; scroll-behavior: smooth; }
         .font-luxury { font-family: 'Cinzel', serif; }
+        select option { background-color: white !important; color: #2A2421 !important; }
     </style>
 </head>
 <body class="overflow-x-hidden relative">
@@ -124,11 +125,23 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="py-12 border-t border-[#E6DFD3]/60 text-center text-[10px] text-gray-400 font-medium bg-white/40">
+        <p>&copy; 2026 Shamasty Studio. All Rights Reserved.</p>
+    </footer>
+
     <!-- JavaScript Data Engine -->
     <script>
         let shoppingCart = [];
 
-        // 01 FRONT SHIELDS DATA
+        // Exact hex configuration shades matching your design metrics
+        const colorPaletteStyles = {
+            "Luxury Tan": { bg: "#D1A153", text: "#2A2421" },
+            "Sage Green": { bg: "#5F8575", text: "#FFFFFF" },
+            "Terracotta Rust": { bg: "#C86A52", text: "#FFFFFF" }
+        };
+
+        // SECTION 01 FRONT DATA - Strict separation of Monograms from baseline art assets
         const frontShieldsData = [
             { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "1" },
             { id: 2, title: "معلش Sarcastic Statement", desc: "Bold, iconic humorous Arabic script layout statement.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "2" },
@@ -166,7 +179,7 @@
             { id: 12, title: "Coastal Horizons Art Piece", desc: "Abstract color-blocked horizontal sunset gradients.", price: 600, tag: "Art Drop Series", defaultImg: "12" }
         ];
 
-        // 02 SIDE SHIELDS DATA (22 files combined into matching pair slots)
+        // SECTION 02 SIDE DATA - Mapped perfectly into distinct pair slots
         const sideShieldsData = [
             {
                 id: 1,
@@ -194,43 +207,16 @@
                     { name: "Terracotta Rust", leftFile: "11", rightFile: "12" }
                 ]
             },
-            {
-                id: 3,
-                title: "Minimalist Crest Side Monogram",
-                desc: "Refined thin-line framing execution for dual side visibility window screens.",
-                price: 450,
-                isInitialDropdown: true,
-                tag: "Bespoke Side Monogram",
-                colors: [
-                    { name: "Luxury Tan", leftFile: "13", rightFile: "14" },
-                    { name: "Sage Green", leftFile: "15", rightFile: "16" },
-                    { name: "Terracotta Rust", leftFile: "17", rightFile: "18" }
-                ]
-            },
-            {
-                id: 4,
-                title: "Bespoke Profile Pair Pack #4",
-                desc: "High-density thermal protection paneling screens.",
-                price: 350,
-                isInitialDropdown: false,
-                tag: "Classic Side Mesh",
-                leftFile: "19",
-                rightFile: "20"
-            },
-            {
-                id: 5,
-                title: "Retro Racing Track Suite (Marlboro Edition)",
-                desc: "Iconic vintage motorsport color-blocked racing configuration. Completely mirrored pair layout.",
-                price: 400,
-                isInitialDropdown: false,
-                tag: "Heritage Profiles",
-                leftFile: "21",
-                rightFile: "22"
-            }
+            { id: 3, title: "Bespoke Profile Pair Pack #3", desc: "High-density protection paneling side screens.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "13", rightFile: "14" },
+            { id: 4, title: "Bespoke Profile Pair Pack #4", desc: "High-density thermal side shield matrix.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "15", rightFile: "16" },
+            { id: 5, title: "Bespoke Profile Pair Pack #5", desc: "Premium cabin-fit side layouts.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "17", rightFile: "18" },
+            { id: 6, title: "Bespoke Profile Pair Pack #6", desc: "High-density custom mesh screen profiles.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "19", rightFile: "20" },
+            { id: 7, title: "Retro Racing Track Suite (Marlboro Edition)", desc: "Iconic vintage motorsport color-blocked racing configuration.", price: 400, isInitialDropdown: false, tag: "Heritage Profiles", leftFile: "21", rightFile: "22" }
         ];
 
         window.onload = function() {
             renderCatalogGrids();
+            applyDropdownColorsOnLoad();
         };
 
         // Fallback File Extension System
@@ -253,16 +239,25 @@
             }
         }
 
-        // Live Dropdown Switcher (Front)
+        // Live Dropdown Color-Match Custom Engine (Front)
         function updateFrontImage(selectElement, targetImgId) {
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const targetFile = selectedOption.dataset.file;
             const imgElement = document.getElementById(targetImgId);
+            
             imgElement.dataset.retryStep = '';
             imgElement.src = `front/${targetFile}.png`;
+
+            // Apply background color adjustments
+            const val = selectElement.value;
+            if (colorPaletteStyles[val]) {
+                selectElement.style.backgroundColor = colorPaletteStyles[val].bg;
+                selectElement.style.color = colorPaletteStyles[val].text;
+                selectElement.style.borderColor = colorPaletteStyles[val].bg;
+            }
         }
 
-        // Live Dropdown Switcher (Side Flipped Stack)
+        // Live Dropdown Color-Match Custom Engine (Side)
         function updateSideImagePair(selectElement, leftImgId, rightImgId) {
             const selectedOption = selectElement.options[selectElement.selectedIndex];
             const leftFile = selectedOption.dataset.left;
@@ -276,6 +271,25 @@
             
             leftImg.src = `side/${leftFile}.png`;
             rightImg.src = `side/${rightFile}.png`;
+
+            // Apply background color adjustments
+            const val = selectElement.value;
+            if (colorPaletteStyles[val]) {
+                selectElement.style.backgroundColor = colorPaletteStyles[val].bg;
+                selectElement.style.color = colorPaletteStyles[val].text;
+                selectElement.style.borderColor = colorPaletteStyles[val].bg;
+            }
+        }
+
+        function applyDropdownColorsOnLoad() {
+            document.querySelectorAll('select').forEach(select => {
+                const val = select.value;
+                if (colorPaletteStyles[val]) {
+                    select.style.backgroundColor = colorPaletteStyles[val].bg;
+                    select.style.color = colorPaletteStyles[val].text;
+                    select.style.borderColor = colorPaletteStyles[val].bg;
+                }
+            });
         }
 
         // HTML Injected Loop Engine
@@ -295,7 +309,7 @@
                         <div class="space-y-2 mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
                             <div>
                                 <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Canvas Color Tone:</label>
-                                <select id="select-color-f-${item.id}" onchange="updateFrontImage(this, '${uniqueImgId}')" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
+                                <select id="select-color-f-${item.id}" onchange="updateFrontImage(this, '${uniqueImgId}')" class="w-full border rounded-lg px-2 py-2 text-xs font-bold transition-all focus:outline-none">
                                     ${item.colors.map(c => `<option value="${c.name}" data-file="${c.fileId}">${c.name}</option>`).join('')}
                                 </select>
                             </div>
@@ -347,7 +361,7 @@
                         <div class="space-y-2 mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
                             <div>
                                 <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Canvas Color Tone:</label>
-                                <select id="select-color-s-${item.id}" onchange="updateSideImagePair(this, '${leftImgId}', '${rightImgId}')" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
+                                <select id="select-color-s-${item.id}" onchange="updateSideImagePair(this, '${leftImgId}', '${rightImgId}')" class="w-full border rounded-lg px-2 py-2 text-xs font-bold transition-all focus:outline-none">
                                     ${item.colors.map(c => `<option value="${c.name}" data-left="${c.leftFile}" data-right="${c.rightFile}">${c.name}</option>`).join('')}
                                 </select>
                             </div>
@@ -395,7 +409,7 @@
                 const txt = document.getElementById(`input-text-f-${customTextId}`).value.trim();
                 if (!txt) { alert("Please specify your desired custom text phrase allocation!"); return; }
             }
-            shoppingCart.push({ name: title, price: price, details: `Front Shield / Universal Sizing (${meta})` });
+            shoppingCart.push({ name: title, price: price, details: `Front Shield / Universal Fit (${meta})` });
             updateCartInterface();
             toggleCart();
         }
@@ -405,7 +419,7 @@
                 const char = document.getElementById(`input-letter-s-${monogramId}`).value.trim();
                 if (!char) { alert("Kindly enter the custom monogram letters for the side window configuration!"); return; }
             }
-            shoppingCart.push({ name: title, price: price, details: `Side Pair Set / Universal Sizing (${meta})` });
+            shoppingCart.push({ name: title, price: price, details: `Side Pair Set / Universal Fit (${meta})` });
             updateCartInterface();
             toggleCart();
         }
