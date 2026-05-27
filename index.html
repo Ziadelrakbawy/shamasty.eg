@@ -13,7 +13,6 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAF6EE; color: #2A2421; scroll-behavior: smooth; }
         .font-luxury { font-family: 'Cinzel', serif; }
-        .active-tab { background-color: #2A2421 !important; color: #white !important; }
     </style>
 </head>
 <body class="overflow-x-hidden relative">
@@ -54,7 +53,7 @@
         </div>
 
         <div id="section-side" class="mb-16 block">
-            <h2 class="font-luxury text-base border-b border-[#2A2421]/10 pb-3 mb-6 text-[#5F8575] font-bold tracking-wider">02 / FRONT SIDE WINDOW PROFILES (PAIRS)</h2>
+            <h2 class="font-luxury text-base border-b border-[#2A2421]/10 pb-3 mb-6 text-[#5F8575] font-bold tracking-wider">02 / FRONT SIDE WINDOW PROFILES (SOLD AS PAIRS)</h2>
             <div id="grid-side-shields" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 </div>
         </div>
@@ -71,7 +70,7 @@
                         <ul class="text-[11px] space-y-2 text-gray-700 font-medium mb-6">
                             <li class="flex items-center text-[#5F8575]">✓ Unified Cabin Protection Symmetry</li>
                             <li class="flex items-center text-[#5F8575]">✓ Select your favorite fine art option from the catalog</li>
-                            <li class="flex items-center text-[#5F8575]">✓ Save 150 EGP vs Individual purchasing metrics</li>
+                            <li class="flex items-center text-[#5F8575]">✓ Save 150 EGP vs Individual buying metrics</li>
                         </ul>
                     </div>
                     <button onclick="addBundleItem('The Full Cabin Suite (Front + Side Pairs Bundle)', 800)" class="w-full bg-[#D1A153] hover:bg-[#2A2421] text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition shadow-sm">Add Bundle • 800 EGP</button>
@@ -122,31 +121,67 @@
     <script>
         let shoppingCart = [];
 
-        // 12 FRONT WINDSHIELD DATABASE ENTRIES
+        // FRONT WINDSHIELD SOURCE DATABASE ENTRIES WITH INTEGRATED DROPDOWN VARIANTS
         const frontShieldsData = [
-            { id: 1, title: "صلي على النبي Wording Drop", desc: "Premium spiritual script layout featuring timeless typography lines.", price: 550, tag: "Custom Word Layout" },
-            { id: 2, title: "معلش Sarcastic Statement", desc: "The ultimate bold humorous typography design backdrop.", price: 550, tag: "Custom Word Layout" },
-            { id: 3, title: "King Chess Skull", desc: "Fine line illustration styling merging chess symmetry and skull crowns.", price: 600, tag: "Art Drop Series" },
-            { id: 4, title: "Angel Monogram Crest (Tan)", desc: "Classical twin-angel framing centered around your custom initial letter choice.", price: 650, tag: "Bespoke Monogram" },
-            { id: 5, title: "Royal Signet Monogram (Tan)", desc: "Sleek contemporary line framing configuration framing unique initials.", price: 650, tag: "Bespoke Monogram" },
-            { id: 6, title: "Angel Monogram Crest (Sage)", desc: "Double-angel symmetry layout set over a premium sage green palette.", price: 650, tag: "Bespoke Monogram" },
-            { id: 7, title: "Angel Monogram Crest (Rust)", desc: "Double-angel symmetry layout set over an exquisite terracotta canvas.", price: 650, tag: "Bespoke Monogram" },
-            { id: 8, title: "Royal Signet Monogram (Sage)", desc: "Clean signature design elements set over a luxurious sage background.", price: 650, tag: "Bespoke Monogram" },
-            { id: 9, title: "Wavy Lines Minimalist", desc: "Premium aesthetic layout featuring beautiful desert topology line paths.", price: 600, tag: "Art Drop Series" },
-            { id: 10, title: "M-Power Performance Edition", desc: "High-contrast motorsport inspired branding aesthetic built for enthusiasts.", price: 600, tag: "Automotive Heritage" },
-            { id: 11, title: "Silver Star Luxury Elite", desc: "Sleek administrative luxury concept piece emphasizing clean brand identity.", price: 600, tag: "Automotive Heritage" },
-            { id: 12, title: "Coastal Horizons Art Piece", desc: "Premium summer layout featuring abstract color-blocked horizon drops.", price: 600, tag: "Art Drop Series" }
+            { id: 1, title: "صلي على النبي Wording Drop", desc: "Premium spiritual script layout featuring timeless typography lines.", price: 550, isCustomText: true, tag: "Custom Word Layout", defaultImg: "1" },
+            { id: 2, title: "معلش Sarcastic Statement", desc: "The ultimate bold humorous typography design backdrop.", price: 550, isCustomText: true, tag: "Custom Word Layout", defaultImg: "2" },
+            { id: 3, title: "King Chess Skull", desc: "Fine line illustration styling merging chess symmetry and skull crowns.", price: 600, tag: "Art Drop Series", defaultImg: "3" },
+            { 
+                id: 4, 
+                title: "Angel Monogram Crest", 
+                desc: "Classical twin-angel framing centered around your custom initial letter choice.", 
+                price: 650, 
+                isInitialDropdown: true,
+                tag: "Bespoke Monogram", 
+                defaultImg: "4",
+                colors: [
+                    { name: "Luxury Tan", fileId: "4" },
+                    { name: "Sage Green", fileId: "6" },
+                    { name: "Terracotta Rust", fileId: "7" }
+                ]
+            },
+            { 
+                id: 5, 
+                title: "Royal Signet Monogram", 
+                desc: "Sleek contemporary line framing configuration framing unique initials.", 
+                price: 650, 
+                isInitialDropdown: true,
+                tag: "Bespoke Monogram", 
+                defaultImg: "5",
+                colors: [
+                    { name: "Luxury Tan", fileId: "5" },
+                    { name: "Sage Green", fileId: "8" }
+                ]
+            },
+            { id: 9, title: "Wavy Lines Minimalist", desc: "Premium aesthetic layout featuring beautiful desert topology line paths.", price: 600, tag: "Art Drop Series", defaultImg: "9" },
+            { id: 10, title: "M-Power Performance Edition", desc: "High-contrast motorsport inspired branding aesthetic built for enthusiasts.", price: 600, tag: "Automotive Heritage", defaultImg: "10" },
+            { id: 11, title: "Silver Star Luxury Elite", desc: "Sleek administrative luxury concept piece emphasizing clean brand identity.", price: 600, tag: "Automotive Heritage", defaultImg: "11" },
+            { id: 12, title: "Coastal Horizons Art Piece", desc: "Premium summer layout featuring abstract color-blocked horizon drops.", price: 600, tag: "Art Drop Series", defaultImg: "12" }
         ];
 
-        // GENERATE 22 SIDE WINDOW SHIELD ENTRIES AUTOMATICALLY
+        // FRONT SIDE SHIELDS AUTOMATED COHESIVE MAPPING ENGINE (22 Files mapped into 11 Double Packs)
         const sideShieldsData = [];
-        for (let i = 1; i <= 22; i++) {
-            if (i === 21) {
-                sideShieldsData.push({ id: 21, title: "Retro Racing Track (Marlboro Edition)", desc: "Iconic vintage motorsport color-blocked racing livery configuration.", price: 400, tag: "Heritage Profiles" });
-            } else if (i === 22) {
-                sideShieldsData.push({ id: 22, title: "Retro Racing Stripe (Marlboro Edition)", desc: "Minimalist layout carrying signature tracking lines for clean side accents.", price: 400, tag: "Heritage Profiles" });
+        for (let i = 1; i <= 11; i++) {
+            let filePointer = (i * 2) - 1; // Maps Loop 1->File 1, Loop 2->File 3 ... Loop 11->File 21
+            
+            if (i === 11) {
+                sideShieldsData.push({
+                    id: i,
+                    imgFile: "21",
+                    title: "Retro Racing Track Suite (Marlboro Edition)",
+                    desc: "Iconic vintage motorsport color-blocked racing livery configuration. Includes Left + Right matching window protections.",
+                    price: 400,
+                    tag: "Heritage Profiles"
+                });
             } else {
-                sideShieldsData.push({ id: i, title: `Bespoke Profile Design #${i}`, desc: "Premium custom-fit high-heat deflection window mesh built for absolute cabin shade.", price: 350, tag: "Classic Side Mesh" });
+                sideShieldsData.push({
+                    id: i,
+                    imgFile: filePointer.toString(),
+                    title: `Bespoke Profile Design Pair #${i}`,
+                    desc: `Premium custom-fit dual side shields package. Engine-matched matching set for complete side mirror viewing protection.`,
+                    price: 350,
+                    tag: "Classic Side Mesh"
+                });
             }
         }
 
@@ -159,20 +194,31 @@
         function handleImgError(img, type, id) {
             if (!img.dataset.retryStep) {
                 img.dataset.retryStep = '1';
-                img.src = type + '/' + id + ' .png'; // Attempt with space file routing
+                img.src = type + '/' + id + ' .png';
             } else if (img.dataset.retryStep === '1') {
                 img.dataset.retryStep = '2';
-                img.src = type + '/' + id + '.png'; // Attempt tight formatting without space
+                img.src = type + '/' + id + '.png';
             } else if (img.dataset.retryStep === '2') {
                 img.dataset.retryStep = '3';
-                img.src = type + '/' + id + '.PNG'; // Check uppercase extension
+                img.src = type + '/' + id + '.PNG';
             } else if (img.dataset.retryStep === '3') {
                 img.dataset.retryStep = '4';
-                img.src = type + '/' + id + ' .PNG'; // Check uppercase with space
+                img.src = type + '/' + id + ' .PNG';
             } else {
                 img.onerror = null;
-                img.src = 'https://placehold.co/600x400?text=Shamasty+Premium+Design'; // Graceful fail-safe placeholder
+                img.src = 'https://placehold.co/600x400?text=Shamasty+Premium+Design';
             }
+        }
+
+        // Dynamic Interactive Image Interceptor for Dropdowns
+        function updateFrontImage(selectElement, targetImgId) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const targetFile = selectedOption.dataset.file;
+            const imgElement = document.getElementById(targetImgId);
+            
+            // Reset error handling chain for the newly targeted file asset
+            imgElement.dataset.retryStep = '';
+            imgElement.src = `front/${targetFile}.png`;
         }
 
         // Content Rendering Loop Engine
@@ -180,66 +226,118 @@
             const frontContainer = document.getElementById('grid-front-shields');
             const sideContainer = document.getElementById('grid-side-shields');
             
-            frontContainer.innerHTML = frontShieldsData.map(item => `
-                <div class="bg-white border border-[#E6DFD3] rounded-2xl p-5 shadow-sm flex flex-col justify-between h-full">
-                    <div>
-                        <div class="w-full bg-[#fcfbfa] mb-4 border border-[#E6DFD3]/50 rounded-xl p-2 flex items-center justify-center h-44 relative">
-                            <span class="absolute top-2 left-2 bg-[#2A2421]/5 text-gray-500 font-bold text-[9px] px-2 py-0.5 rounded-md">ID: F-${item.id}</span>
-                            <img src="front/${item.id}.png" onerror="handleImgError(this, 'front', '${item.id}')" class="max-w-full max-h-full object-contain rounded-lg" alt="${item.title}">
-                        </div>
-                        <span class="text-[9px] font-bold text-[#C86A52] tracking-wider uppercase">${item.tag}</span>
-                        <h3 class="font-luxury text-sm text-[#2A2421] mt-1 mb-1 font-bold line-clamp-1">${item.title}</h3>
-                        <p class="text-[11px] text-gray-500 mb-4 leading-relaxed line-clamp-2">${item.desc}</p>
-                    </div>
-                    <button onclick="addCartItem('${item.title}', ${item.price}, 'Front Shield (F-${item.id})')" class="w-full bg-[#2A2421] hover:bg-[#C86A52] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add • ${item.price} EGP</button>
-                </div>
-            `).join('');
+            // 1. Render Front Shields
+            frontContainer.innerHTML = frontShieldsData.map(item => {
+                let uniqueImgId = `img-front-${item.id}`;
+                let interactiveControls = '';
+                let selectionTrackingJs = `'Standard Finish'`;
 
+                if (item.isInitialDropdown) {
+                    selectionTrackingJs = `document.getElementById('select-color-${item.id}').value + ' [Initial: ' + document.getElementById('input-letter-${item.id}').value.toUpperCase() + ']'`;
+                    interactiveControls = `
+                        <div class="space-y-2 mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
+                            <div>
+                                <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Select Canvas Tone:</label>
+                                <select id="select-color-${item.id}" onchange="updateFrontImage(this, '${uniqueImgId}')" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs text-[#2A2421] font-medium focus:outline-none focus:border-[#C86A52]">
+                                    ${item.colors.map(c => `<option value="${c.name}" data-file="${c.fileId}">${c.name}</option>`).join('')}
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Custom Initial Letter:</label>
+                                <input type="text" id="input-letter-${item.id}" placeholder="E.g., A" maxlength="2" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs font-bold text-[#2A2421] uppercase focus:outline-none">
+                            </div>
+                        </div>
+                    `;
+                } else if (item.isCustomText) {
+                    selectionTrackingJs = `'Custom Word Phrasing: \"' + document.getElementById('input-text-${item.id}').value + '\"'`;
+                    interactiveControls = `
+                        <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Enter Custom Wording Text:</label>
+                            <input type="text" id="input-text-${item.id}" placeholder="Type phrase..." class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs text-[#2A2421] focus:outline-none">
+                        </div>
+                    `;
+                } else {
+                    // Default sleek option metric for uniform look
+                    interactiveControls = `
+                        <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Select Profile Calibration:</label>
+                            <select id="select-spec-${item.id}" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs text-[#2A2421] focus:outline-none">
+                                <option value="Standard Fit">Standard Windshield Fit</option>
+                                <option value="Bespoke Tight Edge Fit">Bespoke Tight Edge Fit (+50 EGP)</option>
+                            </select>
+                        </div>
+                    `;
+                    selectionTrackingJs = `document.getElementById('select-spec-${item.id}').value`;
+                }
+
+                return `
+                    <div class="bg-white border border-[#E6DFD3] rounded-2xl p-5 shadow-sm flex flex-col justify-between h-full">
+                        <div>
+                            <div class="w-full bg-[#fcfbfa] mb-4 border border-[#E6DFD3]/50 rounded-xl p-2 flex items-center justify-center h-44 relative">
+                                <span class="absolute top-2 left-2 bg-[#2A2421]/5 text-gray-500 font-bold text-[9px] px-2 py-0.5 rounded-md">Front Spec</span>
+                                <img id="${uniqueImgId}" src="front/${item.defaultImg}.png" onerror="handleImgError(this, 'front', '${item.defaultImg}')" class="max-w-full max-h-full object-contain rounded-lg" alt="${item.title}">
+                            </div>
+                            <span class="text-[9px] font-bold text-[#C86A52] tracking-wider uppercase">${item.tag}</span>
+                            <h3 class="font-luxury text-sm text-[#2A2421] mt-1 mb-1 font-bold line-clamp-1">${item.title}</h3>
+                            <p class="text-[11px] text-gray-500 mb-2 leading-relaxed line-clamp-2">${item.desc}</p>
+                            ${interactiveControls}
+                        </div>
+                        <button onclick="addFrontItemWithMeta('${item.title}', ${item.price}, ${selectionTrackingJs}, ${item.isInitialDropdown ? item.id : 'null'}, ${item.isCustomText ? item.id : 'null'})" class="mt-4 w-full bg-[#2A2421] hover:bg-[#C86A52] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add To Cart • ${item.price} EGP</button>
+                    </div>
+                `;
+            }).join('');
+
+            // 2. Render Side Shields (11 Cards representing balanced dual pairs)
             sideContainer.innerHTML = sideShieldsData.map(item => `
                 <div class="bg-white border border-[#E6DFD3] rounded-2xl p-5 shadow-sm flex flex-col justify-between h-full">
                     <div>
                         <div class="w-full bg-[#fcfbfa] mb-4 border border-[#E6DFD3]/50 rounded-xl p-2 flex items-center justify-center h-44 relative">
-                            <span class="absolute top-2 left-2 bg-[#2A2421]/5 text-gray-500 font-bold text-[9px] px-2 py-0.5 rounded-md">ID: S-${item.id}</span>
-                            <img src="side/${item.id}.png" onerror="handleImgError(this, 'side', '${item.id}')" class="max-w-full max-h-full object-contain rounded-lg" alt="${item.title}">
+                            <span class="absolute top-2 left-2 bg-[#5F8575]/10 text-[#5F8575] font-bold text-[9px] px-2 py-0.5 rounded-md">Pair Pack (2 Shields)</span>
+                            <img src="side/${item.imgFile}.png" onerror="handleImgError(this, 'side', '${item.imgFile}')" class="max-w-full max-h-full object-contain rounded-lg" alt="${item.title}">
                         </div>
                         <span class="text-[9px] font-bold text-[#5F8575] tracking-wider uppercase">${item.tag}</span>
                         <h3 class="font-luxury text-sm text-[#2A2421] mt-1 mb-1 font-bold line-clamp-1">${item.title}</h3>
-                        <p class="text-[11px] text-gray-500 mb-4 leading-relaxed line-clamp-2">${item.desc}</p>
+                        <p class="text-[11px] text-gray-500 mb-2 leading-relaxed line-clamp-2">${item.desc}</p>
+                        
+                        <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Select Vehicle Body Type:</label>
+                            <select id="select-side-car-${item.id}" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs text-[#2A2421] font-medium focus:outline-none focus:border-[#5F8575]">
+                                <option value="Sedan Classification">Sedan (Standard Sizing)</option>
+                                <option value="Coupe Sizing Class">Coupe (Sleek Frameless)</option>
+                                <option value="SUV / Truck High Cabin">SUV / Cross Cabin (Deep Profile)</option>
+                            </select>
+                        </div>
                     </div>
-                    <button onclick="addCartItem('${item.title}', ${item.price}, 'Side Profile Pair (S-${item.id})')" class="w-full bg-[#2A2421] hover:bg-[#5F8575] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add Pair • ${item.price} EGP</button>
+                    <button onclick="addSideItemWithMeta('${item.title}', ${item.price}, ${item.id})" class="mt-4 w-full bg-[#2A2421] hover:bg-[#5F8575] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add Side Pair • ${item.price} EGP</button>
                 </div>
             `).join('');
         }
 
-        // Catalog UI Category Filters
-        function filterCatalog(category) {
-            const tabs = ['all', 'front', 'side', 'bundles'];
-            tabs.forEach(t => {
-                const btn = document.getElementById('tab-' + t);
-                if(t === category) {
-                    btn.className = "px-5 py-2.5 text-xs font-bold rounded-xl transition bg-[#2A2421] text-white";
-                } else {
-                    btn.className = "px-5 py-2.5 text-xs font-bold rounded-xl text-gray-600 hover:text-black transition";
-                }
-            });
+        // Cart Submission Logic Controllers
+        function addFrontItemWithMeta(title, price, metaDetails, monogramId, customTextId) {
+            if (monogramId) {
+                const initialLetter = document.getElementById(`input-letter-${monogramId}`).value.trim();
+                if (!initialLetter) { alert("Please specify your desired custom Initial Letter!"); return; }
+            }
+            if (customTextId) {
+                const textPhrase = document.getElementById(`input-text-${customTextId}`).value.trim();
+                if (!textPhrase) { alert("Please fill out your Custom Phrase text box!"); return; }
+            }
 
-            document.getElementById('section-front').style.display = (category === 'all' || category === 'front') ? 'block' : 'none';
-            document.getElementById('section-side').style.display = (category === 'all' || category === 'side') ? 'block' : 'none';
-            document.getElementById('section-bundles').style.display = (category === 'all' || category === 'bundles') ? 'block' : 'none';
+            shoppingCart.push({ name: title, price: price, details: metaDetails });
+            updateCartInterface();
+            toggleCart();
         }
 
-        function toggleCart() {
-            document.getElementById('cart-sidebar').classList.toggle('hidden');
-        }
-
-        function addCartItem(name, price, specInfo) {
-            shoppingCart.push({ name: name, price: price, details: specInfo });
+        function addSideItemWithMeta(title, price, id) {
+            const vehicleBodyType = document.getElementById(`select-side-car-${id}`).value;
+            shoppingCart.push({ name: title, price: price, details: `Side Windows Matching Pair (${vehicleBodyType})` });
             updateCartInterface();
             toggleCart();
         }
 
         function addBundleItem(bundleName, price) {
-            shoppingCart.push({ name: bundleName, price: price, details: "Special Package Deal Offer" });
+            shoppingCart.push({ name: bundleName, price: price, details: "Special Combined Value Package Deal" });
             updateCartInterface();
             toggleCart();
         }
@@ -264,7 +362,7 @@
                 <div class="bg-white border border-[#E6DFD3] p-4 rounded-xl flex justify-between items-start text-xs shadow-sm">
                     <div>
                         <h4 class="font-bold text-[#2A2421]">${item.name}</h4>
-                        <p class="text-gray-500 mt-1 font-medium">✨ Ref: ${item.details}</p>
+                        <p class="text-gray-500 mt-1 font-medium">✨ Calibration: ${item.details}</p>
                         <span class="text-[#C86A52] font-semibold mt-1 inline-block">${item.price} EGP</span>
                     </div>
                     <button onclick="removeCartItem(${idx})" class="text-red-500 hover:text-red-700 font-bold uppercase text-[10px] tracking-wider ml-2">Remove</button>
@@ -275,12 +373,32 @@
             totalDisplay.innerText = combinedTotal.toLocaleString() + ' EGP';
         }
 
+        function filterCatalog(category) {
+            document.getElementById('section-front').style.display = (category === 'all' || category === 'front') ? 'block' : 'none';
+            document.getElementById('section-side').style.display = (category === 'all' || category === 'side') ? 'block' : 'none';
+            document.getElementById('section-bundles').style.display = (category === 'all' || category === 'bundles') ? 'block' : 'none';
+            
+            const tabs = ['all', 'front', 'side', 'bundles'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t);
+                if(t === category) {
+                    btn.className = "px-5 py-2.5 text-xs font-bold rounded-xl transition bg-[#2A2421] text-white";
+                } else {
+                    btn.className = "px-5 py-2.5 text-xs font-bold rounded-xl text-gray-600 hover:text-black transition";
+                }
+            });
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('hidden');
+        }
+
         function submitOrderViaWhatsApp() {
             if (shoppingCart.length === 0) { alert("Your selection cart is currently empty!"); return; }
             let message = 'Hi Shamasty! I want to confirm my premium order:\n\n';
             
             shoppingCart.forEach((item, index) => {
-                message += `📍 ITEM #${index + 1}:\n• Design: ${item.name}\n• Placement/Ref: ${item.details}\n• Rate: ${item.price} EGP\n\n`;
+                message += `📍 ITEM #${index + 1}:\n• Design: ${item.name}\n• Placement/Specs: ${item.details}\n• Rate: ${item.price} EGP\n\n`;
             });
 
             let finalPrice = shoppingCart.reduce((sum, item) => sum + item.price, 0);
