@@ -135,10 +135,10 @@
             "Terracotta Rust": { bg: "#C86A52", text: "#FFFFFF" }
         };
 
-        // SECTION 01 FRONT DATA - Order swapped per user request; input logic split between custom phrase and single word
+        // SECTION 01 FRONT DATA - Original positions restored; logic profiles flipped per request
         const frontShieldsData = [
-            { id: 2, title: "معلش Sarcastic Statement", desc: "Bold, iconic humorous Arabic script layout statement.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "2" },
-            { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography.", price: 550, isSingleWord: true, tag: "Custom Phrase Layout", defaultImg: "1" },
+            { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography. Configured for a single custom word entry.", price: 550, isSingleWord: true, tag: "Custom Word Layout", defaultImg: "1" },
+            { id: 2, title: "معلش Sarcastic Statement", desc: "Bold, iconic humorous Arabic script layout statement. Configured for a full custom phrase entry.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "2" },
             { id: 3, title: "BMW Ultimate Driving Heritage Edition", desc: "A clean, classic tribute to Bavarian engineering excellence, styled perfectly to complement any BMW model dashboard.", price: 600, tag: "Automotive Heritage", defaultImg: "10" },
             { 
                 id: 4, 
@@ -173,7 +173,7 @@
             { id: 8, title: "Retro Coastal Highway Cruise Art", desc: "A nostalgic tribute to vintage seaside cruising and classic surf-wagon culture, designed for ultimate summer drive vibes.", price: 600, tag: "Automotive Lifestyle", defaultImg: "9" }
         ];
 
-        // SECTION 02 SIDE DATA - Initials entry boxes removed from UI code engine
+        // SECTION 02 SIDE DATA - Maintained clean color-only configuration
         const sideShieldsData = [
             { id: 1, title: "Bespoke Profile Pair Pack #1", desc: "High-density clean white protection side paneling screens.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "1", rightFile: "2" },
             {
@@ -306,7 +306,7 @@
                     selectionTracker = `'Custom Wording Request: \"' + document.getElementById('input-text-f-${item.id}').value + '\"'`;
                     inputsHtml = `
                         <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
-                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Enter Customized Text Phrase:</label>
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">ENTER CUSTOMIZED TEXT PHRASE:</label>
                             <input type="text" id="input-text-f-${item.id}" placeholder="Type phrase layout..." class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
                         </div>
                     `;
@@ -314,7 +314,7 @@
                     selectionTracker = `'Custom Single Word Request: \"' + document.getElementById('input-word-f-${item.id}').value + '\"'`;
                     inputsHtml = `
                         <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
-                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Enter Customized Single Word:</label>
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">ENTER CUSTOMIZED SINGLE WORD:</label>
                             <input type="text" id="input-word-f-${item.id}" placeholder="Type single word..." class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
                         </div>
                     `;
