@@ -135,10 +135,10 @@
             "Terracotta Rust": { bg: "#C86A52", text: "#FFFFFF" }
         };
 
-        // SECTION 01 FRONT DATA - Names matched accurately to file graphics and updated per automotive lifestyle guidelines
+        // SECTION 01 FRONT DATA - Order swapped per user request; input logic split between custom phrase and single word
         const frontShieldsData = [
-            { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "1" },
             { id: 2, title: "معلش Sarcastic Statement", desc: "Bold, iconic humorous Arabic script layout statement.", price: 550, isCustomText: true, tag: "Custom Phrase Layout", defaultImg: "2" },
+            { id: 1, title: "صلي على النبي Wording Drop", desc: "Timeless spiritual script layout typography.", price: 550, isSingleWord: true, tag: "Custom Phrase Layout", defaultImg: "1" },
             { id: 3, title: "BMW Ultimate Driving Heritage Edition", desc: "A clean, classic tribute to Bavarian engineering excellence, styled perfectly to complement any BMW model dashboard.", price: 600, tag: "Automotive Heritage", defaultImg: "10" },
             { 
                 id: 4, 
@@ -173,7 +173,7 @@
             { id: 8, title: "Retro Coastal Highway Cruise Art", desc: "A nostalgic tribute to vintage seaside cruising and classic surf-wagon culture, designed for ultimate summer drive vibes.", price: 600, tag: "Automotive Lifestyle", defaultImg: "9" }
         ];
 
-        // SECTION 02 SIDE DATA - Slot #2 removed; monogram indexes completely untangled
+        // SECTION 02 SIDE DATA - Initials entry boxes removed from UI code engine
         const sideShieldsData = [
             { id: 1, title: "Bespoke Profile Pair Pack #1", desc: "High-density clean white protection side paneling screens.", price: 350, isInitialDropdown: false, tag: "Classic Side Mesh", leftFile: "1", rightFile: "2" },
             {
@@ -291,7 +291,7 @@
                 let selectionTracker = `'Standard Baseline Graphics'`;
 
                 if (item.isInitialDropdown) {
-                    selectionTracker = `document.getElementById('select-color-f-${item.id}').value + ' [Initial: ' + document.getElementById('input-letter-f-${item.id}').value.toUpperCase() + ']'`;
+                    selectionTracker = `document.getElementById('select-color-f-${item.id}').value`;
                     inputsHtml = `
                         <div class="space-y-2 mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
                             <div>
@@ -299,10 +299,6 @@
                                 <select id="select-color-f-${item.id}" onchange="updateFrontImage(this, '${uniqueImgId}')" class="w-full border rounded-lg px-2 py-2 text-xs font-bold transition-all focus:outline-none text-white">
                                     ${item.colors.map(c => `<option value="${c.name}" data-file="${c.fileId}">${c.name}</option>`).join('')}
                                 </select>
-                            </div>
-                            <div>
-                                <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Custom Initial Letter:</label>
-                                <input type="text" id="input-letter-f-${item.id}" placeholder="E.g., M" maxlength="2" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs font-bold uppercase focus:outline-none">
                             </div>
                         </div>
                     `;
@@ -312,6 +308,14 @@
                         <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
                             <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Enter Customized Text Phrase:</label>
                             <input type="text" id="input-text-f-${item.id}" placeholder="Type phrase layout..." class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
+                        </div>
+                    `;
+                } else if (item.isSingleWord) {
+                    selectionTracker = `'Custom Single Word Request: \"' + document.getElementById('input-word-f-${item.id}').value + '\"'`;
+                    inputsHtml = `
+                        <div class="mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
+                            <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Enter Customized Single Word:</label>
+                            <input type="text" id="input-word-f-${item.id}" placeholder="Type single word..." class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs focus:outline-none">
                         </div>
                     `;
                 }
@@ -327,7 +331,7 @@
                             <p class="text-[11px] text-gray-500 mb-2 leading-relaxed line-clamp-2">${item.desc}</p>
                             ${inputsHtml}
                         </div>
-                        <button onclick="addFrontItemWithMeta('${item.title}', ${item.price}, ${selectionTracker}, ${item.isInitialDropdown ? item.id : 'null'}, ${item.isCustomText ? item.id : 'null'})" class="mt-4 w-full bg-[#2A2421] hover:bg-[#C86A52] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add Shield • ${item.price} EGP</button>
+                        <button onclick="addFrontItemWithMeta('${item.title}', ${item.price}, ${selectionTracker}, ${item.isInitialDropdown ? item.id : 'null'}, ${item.isCustomText ? item.id : 'null'}, ${item.isSingleWord ? item.id : 'null'})" class="mt-4 w-full bg-[#2A2421] hover:bg-[#C86A52] text-white font-semibold py-3 rounded-xl text-[11px] uppercase tracking-wider transition shadow-sm">Add Shield • ${item.price} EGP</button>
                     </div>
                 `;
             }).join('');
@@ -343,7 +347,7 @@
                 let initialRight = item.isInitialDropdown ? item.colors[0].rightFile : item.rightFile;
 
                 if (item.isInitialDropdown) {
-                    selectionTracker = `document.getElementById('select-color-s-${item.id}').value + ' [Initial: ' + document.getElementById('input-letter-s-${item.id}').value.toUpperCase() + ']'`;
+                    selectionTracker = `document.getElementById('select-color-s-${item.id}').value`;
                     controlsHtml = `
                         <div class="space-y-2 mt-3 bg-[#FAF6EE] p-3 rounded-xl border border-[#E6DFD3]">
                             <div>
@@ -351,10 +355,6 @@
                                 <select id="select-color-s-${item.id}" onchange="updateSideImagePair(this, '${leftImgId}', '${rightImgId}')" class="w-full border rounded-lg px-2 py-2 text-xs font-bold transition-all focus:outline-none text-white">
                                     ${item.colors.map(c => `<option value="${c.name}" data-left="${c.leftFile}" data-right="${c.rightFile}">${c.name}</option>`).join('')}
                                 </select>
-                            </div>
-                            <div>
-                                <label class="block text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">Custom Initial Letter:</label>
-                                <input type="text" id="input-letter-s-${item.id}" placeholder="E.g., K" maxlength="2" class="w-full bg-white border border-[#E6DFD3] rounded-lg px-2 py-1.5 text-xs font-bold uppercase focus:outline-none">
                             </div>
                         </div>
                     `;
@@ -385,14 +385,15 @@
             }).join('');
         }
 
-        function addFrontItemWithMeta(title, price, meta, monogramId, customTextId) {
-            if (monogramId) {
-                const char = document.getElementById(`input-letter-f-${monogramId}`).value.trim();
-                if (!char) { alert("Kindly provide the specific monogram initial letter!"); return; }
-            }
+        function addFrontItemWithMeta(title, price, meta, monogramId, customTextId, singleWordId) {
             if (customTextId) {
                 const txt = document.getElementById(`input-text-f-${customTextId}`).value.trim();
                 if (!txt) { alert("Please specify your desired custom text phrase allocation!"); return; }
+            }
+            if (singleWordId) {
+                const word = document.getElementById(`input-word-f-${singleWordId}`).value.trim();
+                if (!word) { alert("Please specify your desired single word text!"); return; }
+                if (word.includes(' ')) { alert("The Wording Drop option is configured for a single word only. Please remove any spaces."); return; }
             }
             shoppingCart.push({ name: title, price: price, details: `Front Shield (${meta})` });
             updateCartInterface();
@@ -400,10 +401,6 @@
         }
 
         function addSideItemWithMeta(title, price, meta, monogramId) {
-            if (monogramId) {
-                const char = document.getElementById(`input-letter-s-${monogramId}`).value.trim();
-                if (!char) { alert("Kindly enter the custom monogram letters for the side window configuration!"); return; }
-            }
             shoppingCart.push({ name: title, price: price, details: `Side Pair Set (${meta})` });
             updateCartInterface();
             toggleCart();
