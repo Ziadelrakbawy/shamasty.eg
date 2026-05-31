@@ -86,7 +86,7 @@
 
         .set-card {
             background: #fff;
-            border: 2px solid #495057; /* Single clean border wrapping the entire pair */
+            border: 2px solid #495057; 
             border-radius: 12px;
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.04);
@@ -119,32 +119,31 @@
 
     <div class="container">
 
+        <!-- SECTION O1 -->
         <section id="section-o1">
             <h2>Section O1</h2>
             <div class="design-grid">
                 <script>
-                    // Array of 15 names
-                    // 1-4 are customizable friendly names (no hardcoded letters)
-                    // 5-15 are catchy, generic car sunshield names
+                    // Catchy, searchable names with the updated cool name for MG
                     const designNames = [
-                        "Custom Monogram",    // 1 (Customizable)
-                        "Signature Text",     // 2 (Customizable)
-                        "Custom Initials",    // 3 (Customizable)
-                        "Personalized Edge",  // 4 (Customizable)
-                        "Stealth Shadow",     // 5
-                        "Carbon Matrix",      // 6
-                        "Solar Reflex",       // 7
-                        "Midnight Chrome",    // 8
-                        "Desert Horizon",     // 9
-                        "Neon Grid",          // 10
-                        "Deep Abyss",         // 11
-                        "Urban Camo",         // 12
-                        "Minimal Luxe",       // 13
-                        "Vortex Wave",        // 14
-                        "Apex Titan"          // 15
+                        "Custom Phrase",     // 1
+                        "Signature Word",    // 2
+                        "Classic Monogram",  // 3
+                        "Angel Crest",       // 4
+                        "Summer Vibe",       // 5
+                        "Red Classic",       // 6
+                        "BMW Beast",         // 7
+                        "Mercedes Star",     // 8
+                        "Cupra Fire",        // 9
+                        "Toyota Spirit",     // 10
+                        "Hyundai Wave",      // 11
+                        "Kia Motion",        // 12
+                        "Fiat Italia",       // 13
+                        "Fiat Ciao",         // 14
+                        "MG Rogue"           // 15 (Updated to a catchier style)
                     ];
 
-                    // Generates 15 individual designs with their assigned names
+                    // Generates 15 individual designs with their names
                     for (let i = 1; i <= 15; i++) {
                         document.write(`
                             <div class="design-card">
@@ -159,11 +158,11 @@
             </div>
         </section>
 
+        <!-- SECTION O2 -->
         <section id="section-o2">
             <h2>Section O2</h2>
             <div class="sets-container">
                 <script>
-                    // Generates 12 pairs from the 'side' folder (side/1.png & side/2.png, up to side/23.png & side/24.png)
                     for (let i = 1; i <= 24; i += 2) {
                         document.write(`
                             <div class="set-card">
@@ -182,6 +181,7 @@
             </div>
         </section>
 
+        <!-- BUNDLES SECTION -->
         <section id="section-bundles">
             <h2>Bundles Section</h2>
             <div class="frozen-section">
