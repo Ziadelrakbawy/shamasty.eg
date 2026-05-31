@@ -62,8 +62,8 @@
 
         .image-container {
             width: 100%;
-            aspect-ratio: 4 / 3; /* Standard rectangle ratio for single designs */
-            background-color: #eaedf0; /* Fallback color if image is missing */
+            aspect-ratio: 4 / 3;
+            background-color: #eaedf0;
             border-radius: 6px;
         }
 
@@ -89,7 +89,7 @@
 
         .set-pair .image-container {
             flex: 1;
-            aspect-ratio: 1 / 1; /* Square ratio for side-by-side images */
+            aspect-ratio: 1 / 1;
         }
 
         /* FROZEN BUNDLES SECTION */
@@ -108,16 +108,17 @@
 
     <div class="container">
 
+        <!-- SECTION O1 -->
         <section id="section-o1">
             <h2>Section O1</h2>
             <div class="design-grid">
                 <script>
-                    // Generates 15 individual designs (1.png to 15.png)
+                    // Pulls 15 individual designs from the 'front' folder (front/1.png to front/15.png)
                     for (let i = 1; i <= 15; i++) {
                         document.write(`
                             <div class="design-card">
                                 <div class="image-container">
-                                    <img src="${i}.png" alt="">
+                                    <img src="front/${i}.png" alt="">
                                 </div>
                             </div>
                         `);
@@ -126,20 +127,21 @@
             </div>
         </section>
 
+        <!-- SECTION O2 -->
         <section id="section-o2">
             <h2>Section O2</h2>
             <div class="sets-container">
                 <script>
-                    // Generates 12 pairs out of 24 images (1&2, 3&4, up to 23&24)
+                    // Pulls 12 pairs from the 'side' folder (side/1.png & side/2.png, up to side/23.png & side/24.png)
                     for (let i = 1; i <= 24; i += 2) {
                         document.write(`
                             <div class="set-card">
                                 <div class="set-pair">
                                     <div class="image-container">
-                                        <img src="${i}.png" alt="">
+                                        <img src="side/${i}.png" alt="">
                                     </div>
                                     <div class="image-container">
-                                        <img src="${i+1}.png" alt="">
+                                        <img src="side/${i+1}.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -149,6 +151,7 @@
             </div>
         </section>
 
+        <!-- BUNDLES SECTION -->
         <section id="section-bundles">
             <h2>Bundles Section</h2>
             <div class="frozen-section">
